@@ -3,11 +3,25 @@ import Layout from "@/components/Layout";
 import SummaryCard from "@/components/SummaryCard";
 import { useState } from "react";
 import AvatarGroup from "@/components/AvatarGroup";
+import { Transaction } from "@/types";
+import TransactionTable from "@/components/TransactionTable";
 
 const index = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "transactions">(
     "overview"
   );
+
+  const transactions: Transaction[] = [
+  { id: '1', date: '2023-10-01', remark: 'Salary', amount: 3000, currency: 'USD', type: 'Credit' },
+  { id: '2', date: '2023-10-02', remark: 'Groceries', amount: -150, currency: 'USD', type: 'Debit' },
+  { id: '3', date: '2023-10-03', remark: 'Gym Membership', amount: -50, currency: 'USD', type: 'Debit' },
+  { id: '4', date: '2023-10-04', remark: 'Dinner', amount: -40, currency: 'USD', type: 'Debit' },
+  { id: '5', date: '2023-10-05', remark: 'Movie Tickets', amount: -30, currency: 'USD', type: 'Debit' },
+  { id: '6', date: '2023-10-06', remark: 'Rent', amount: -1200, currency: 'USD', type: 'Debit' },
+  { id: '7', date: '2023-10-07', remark: 'Utilities', amount: -100, currency: 'USD', type: 'Debit' },
+  { id: '8', date: '2023-10-08', remark: 'Car Payment', amount: -400, currency: 'USD', type: 'Debit' },
+  { id: '9', date: '2023-10-09', remark: 'Insurance', amount: -200, currency: 'USD', type: 'Debit' },
+]
 
   return (
     <Layout>
@@ -77,6 +91,11 @@ const index = () => {
               />
             </div>
           </section>
+
+              <section>
+      <h2 className="text-lg font-semibold mb-4">Transactions</h2>
+      <TransactionTable transactions={transactions} />
+    </section>
         </>
       )}
     </Layout>
