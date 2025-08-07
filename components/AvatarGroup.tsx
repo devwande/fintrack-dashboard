@@ -1,16 +1,17 @@
 const avatars = [
-  { name: 'Ava', src: '/images/ava.jpg' },
-  { name: 'Liam', src: '/images/liam.jpg' },
-  { name: 'Noah', src: '/images/noah.jpg' },
+  { name: 'Ava', src: '/ava.svg' },
+  { name: 'Liam', src: '/liam.svg' },
+  { name: 'Random', src: '/random.svg' },
+  { name: 'Noah', src: '/noah.svg' },
 ]
 
 const AvatarGroup = () => {
   return (
     <div className="flex items-center space-x-2">
       <div className="flex -space-x-2">
-        {avatars.map((avatar, idx) => (
+        {avatars.map((avatar, index) => (
           <img
-            key={idx}
+            key={index}
             src={avatar.src}
             alt={avatar.name}
             className="w-8 h-8 rounded-full border-2 border-white object-cover"
