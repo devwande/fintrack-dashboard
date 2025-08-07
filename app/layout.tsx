@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Timmana } from "next/font/google";
+
 import "../styles/globals.css"
+
+const timmana = Timmana({
+  variable: "--font-timmana",
+  subsets: ["latin"],
+  display: "swap",
+  style: "normal",  
+  weight: ["400"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${timmana.variable} antialiased`}
       >
         {children}
       </body>
