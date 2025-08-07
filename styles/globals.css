@@ -1,3 +1,18 @@
 @import "tailwindcss";
 
+@layer theme, base, components, utilities;
 
+@layer components {
+    .bg-faint-green{
+        @apply bg-[rgba(52,97,111,0.09)]
+    }
+}
+
+@theme {
+        --breakpoint-sm: 570px;
+        --breakpoint-md: 768px;
+        --breakpoint-ls: 900px;
+        --breakpoint-lg: 1024px;
+        --breakpoint-ld: 1140px;
+        --breakpoint-xl: 1280px;
+}

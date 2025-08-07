@@ -31,15 +31,15 @@ const TransactionTable = ({transactions}: Props) => {
     }
   }
   return (
-    <div className="overflow-x-auto border rounded-xl">
-      <table className="min-w-full text-sm">
+    <div className="overflow-x-auto ">
+      <table className="min-w-full divide-y divide-gray-200 text-sm">
         <thead className="bg-gray-50 text-gray-600 text-left">
           <tr>
-            <th className="p-3 cursor-pointer" onClick={() => toggleSort('date')}>Date</th>
-            <th className="p-3 cursor-pointer" onClick={() => toggleSort('remark')}>Remark</th>
-            <th className="p-3 cursor-pointer" onClick={() => toggleSort('amount')}>Amount</th>
-            <th className="p-3">Currency</th>
-            <th className="p-3 cursor-pointer" onClick={() => toggleSort('type')}>Type</th>
+            <th scope="col" className="p-3 cursor-pointer" onClick={() => toggleSort('date')}>Date</th>
+            <th scope="col" className="p-3 cursor-pointer" onClick={() => toggleSort('remark')}>Remark</th>
+            <th scope="col" className="p-3 cursor-pointer" onClick={() => toggleSort('amount')}>Amount</th>
+            <th scope="col" className="p-3">Currency</th>
+            <th scope="col" className="p-3 cursor-pointer" onClick={() => toggleSort('type')}>Type</th>
           </tr>
         </thead>
         <tbody>

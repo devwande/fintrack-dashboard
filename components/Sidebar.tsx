@@ -14,7 +14,7 @@ const Sidebar = () => {
   const navItems = ['Dashboard', 'Transactions', 'Reports', 'Settings']
 
   return (
-    <aside className="w-[320px] min-h-screen border-r border-white hidden md:flex flex-col px-4">
+    <aside className="w-[320px] min-h-screen border-r border-white hidden md:flex flex-col ">
       <nav className="space-y-4 flex flex-col text-sm">
         {navItems.map((item) => (
           <button

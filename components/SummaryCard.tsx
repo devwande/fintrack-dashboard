@@ -4,23 +4,19 @@ interface SummaryCardProps {
   label: string
   value: string
   change: string
-  changeType: 'positive' | 'negative'
 }
 
-const SummaryCard = ({ label, value, change, changeType }: SummaryCardProps) => {
+const SummaryCard = ({ label, value, change }: SummaryCardProps) => {
   return (
-    <div className="bg-gray-50 p-4 rounded-xl border w-full sm:w-auto">
-      <div className="text-sm text-gray-500 flex justify-between items-center">
+    <div className="bg-faint-green p-5 rounded-xl border border-none w-full sm:w-auto">
+      <div className="text-md font-bold flex justify-between items-center">
         {label}
-        <button className="text-gray-400 text-lg">⋯</button>
+        <button className="text-2xl font-bold">⋯</button>
       </div>
-      <div className="text-2xl font-semibold mt-2">{value}</div>
+      <div className="text-3xl font-bold mt-2">{value}</div>
       <div
-        className={`text-sm mt-1 ${
-          changeType === 'positive' ? 'text-green-600' : 'text-red-600'
-        }`}
+        className={`text-sm mt-1 text-[#3E7383]`}
       >
-        {changeType === 'positive' ? '+' : ''}
         {change}
       </div>
     </div>
