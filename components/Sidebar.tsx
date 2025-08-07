@@ -1,14 +1,34 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
+import { Public_Sans } from 'next/font/google'
+
+const publicSans = Public_Sans({
+  variable: "--font-public-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+})
 
 const Sidebar = () => {
+  const [active, setActive] = useState('Dashboard')
+
+  const navItems = ['Dashboard', 'Transactions', 'Reports', 'Settings']
+
   return (
-    <aside className="w-60 min-h-screen bg-gray-50 border-r hidden md:flex flex-col py-6 px-4">
-      <div className="text-xl font-semibold mb-8 text-blue-700">FinTrack</div>
+    <aside className="w-[320px] min-h-screen border-r border-white hidden md:flex flex-col py-6 px-4">
       <nav className="space-y-4 flex flex-col text-sm">
-        <a href="#" className="text-blue-700 font-medium">Dashboard</a>
-        <a href="#">Transactions</a>
-        <a href="#">Reports</a>
-        <a href="#">Settings</a>
+        {navItems.map((item) => (
+          <button
+            key={item}
+            onClick={() => setActive(item)}
+            className={`${publicSans.className} text-left px-3 py-2 rounded-full transition-colors ${
+              active === item
+                ? 'text-[#386776] bg-[#8DC3D4]'
+                : 'text-gray-700 hover:bg-gray-100'
+            }`}
+          >
+            {item}
+          </button>
+        ))}
       </nav>
     </aside>
   )

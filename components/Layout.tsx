@@ -13,13 +13,19 @@
 //   )
 // }
 
-import Header from './Header'
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return(
-    <div className='min-h-screen bg-white px-12'>
-          <Header />
-    </div>
-
-  )
+  return (
+    <>
+      <div className="min-h-screen bg-white px-12">
+        <Header />
+        <Sidebar />
+      </div>
+      <div>
+        
+      </div>
+    </>
+  );
 }
