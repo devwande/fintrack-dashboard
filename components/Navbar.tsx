@@ -9,7 +9,7 @@ const timmana = Timmana({
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between px-4 py-4 border-b border-white">
+    <header className="flex items-center justify-between py-4 border-b border-white">
       <div className="flex items-center gap-8">
         <div><img src="/menu.svg" alt="Menu button" /></div>
         <div className='flex items-center gap-2'>

@@ -1,30 +1,15 @@
-// import Header from './Header'
-// import Sidebar from './Sidebar'
-
-// export default function Layout({ children }: { children: React.ReactNode }) {
-//   return (
-//     <div className="min-h-screen flex bg-white text-gray-900">
-//       <Sidebar />
-//       <div className="flex flex-col flex-1">
-//         <Header />
-//         <main className="flex-1 p-4 md:p-6">{children}</main>
-//       </div>
-//     </div>
-//   )
-// }
-
-import Header from "./Header";
+import Header from "./Navbar";
 import Sidebar from "./Sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <div className="min-h-screen bg-white px-12">
+      <div className="min-h-screen max-w-[1440px] mx-auto bg-white">
         <Header />
-        <Sidebar />
-      </div>
-      <div>
-        
+        <div className="grid grid-cols-[320px_1fr] gap-6 pt-2">
+          <Sidebar />
+          <main className="">{children}</main>
+        </div>
       </div>
     </>
   );
