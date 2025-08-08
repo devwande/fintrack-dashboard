@@ -10,9 +10,7 @@ interface SummaryCardProps {
 const SummaryCard = ({ label, value, change }: SummaryCardProps) => {
   return (
     <div
-      className="bg-faint-green p-4 md:p-5 rounded-xl border-none w-full 
-                    hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
-    >
+      className="bg-faint-green p-4 md:p-5 rounded-xl border-none w-full hover:shadow-md transition-all duration-200 hover:scale-[1.02]">
       <div className="text-sm md:text-md font-semibold flex justify-between items-center text-gray-700">
         <span className="truncate pr-2">{label}</span>
         <Image

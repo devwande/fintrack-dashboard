@@ -24,8 +24,6 @@ const Layout = ({ children, onSearch, searchQuery, onNavigate, activePage = "das
         setSidebarOpen(false);
       }
     };
-    
-    // Set initial state
     handleResize();
     setIsHydrated(true);
     
@@ -53,7 +51,6 @@ const Layout = ({ children, onSearch, searchQuery, onNavigate, activePage = "das
       <div className="min-h-screen max-w-[1600px] mx-auto">
         <Navbar onMenuClick={toggleSidebar} onSearch={onSearch} searchQuery={searchQuery}/>
         <div className="flex">
-          {/* Show sidebar on desktop by default during SSR */}
           <aside className="hidden md:block w-64 bg-white">
             <div className="h-full"></div>
           </aside>

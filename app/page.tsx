@@ -26,81 +26,17 @@ const Page = () => {
   const [activePage, setActivePage] = useState("dashboard");
 
   const transactions: Transaction[] = [
-    {
-      id: "1",
-      date: "2023-10-01",
-      remark: "Salary",
-      amount: 3000,
-      currency: "USD",
-      type: "Credit",
-    },
-    {
-      id: "2",
-      date: "2023-10-02",
-      remark: "Groceries",
-      amount: -150,
-      currency: "USD",
-      type: "Debit",
-    },
-    {
-      id: "3",
-      date: "2023-10-03",
-      remark: "Gym Membership",
-      amount: -50,
-      currency: "USD",
-      type: "Debit",
-    },
-    {
-      id: "4",
-      date: "2023-10-04",
-      remark: "Dinner",
-      amount: -40,
-      currency: "USD",
-      type: "Debit",
-    },
-    {
-      id: "5",
-      date: "2023-10-05",
-      remark: "Movie Tickets",
-      amount: -30,
-      currency: "USD",
-      type: "Debit",
-    },
-    {
-      id: "6",
-      date: "2023-10-06",
-      remark: "Rent",
-      amount: -1200,
-      currency: "USD",
-      type: "Debit",
-    },
-    {
-      id: "7",
-      date: "2023-10-07",
-      remark: "Utilities",
-      amount: -100,
-      currency: "USD",
-      type: "Debit",
-    },
-    {
-      id: "8",
-      date: "2023-10-08",
-      remark: "Car Payment",
-      amount: -400,
-      currency: "USD",
-      type: "Debit",
-    },
-    {
-      id: "9",
-      date: "2023-10-09",
-      remark: "Insurance",
-      amount: -200,
-      currency: "USD",
-      type: "Debit",
-    },
+    { id: "1", date: "2023-10-01", remark: "Salary", amount: 3000, currency: "USD", type: "Credit", },
+    { id: "2", date: "2023-10-02", remark: "Groceries", amount: -150, currency: "USD", type: "Debit", },
+    { id: "3", date: "2023-10-03", remark: "Gym Membership", amount: -50, currency: "USD", type: "Debit", },
+    { id: "4", date: "2023-10-04", remark: "Dinner", amount: -40, currency: "USD", type: "Debit", },
+    { id: "5", date: "2023-10-05", remark: "Movie Tickets", amount: -30, currency: "USD", type: "Debit", },
+    { id: "6", date: "2023-10-06", remark: "Rent", amount: -1200, currency: "USD", type: "Debit", },
+    { id: "7", date: "2023-10-07", remark: "Utilities", amount: -100, currency: "USD", type: "Debit", },
+    { id: "8", date: "2023-10-08", remark: "Car Payment", amount: -400, currency: "USD", type: "Debit", },
+    { id: "9", date: "2023-10-09", remark: "Insurance", amount: -200, currency: "USD", type: "Debit", },
   ];
 
-  // Filter transactions based on search query
   const filteredTransactions = useMemo(() => {
     if (!searchQuery.trim()) return transactions;
     
@@ -114,7 +50,7 @@ const Page = () => {
     );
   }, [searchQuery, transactions]);
 
-  // Simulate loading
+  //This is just to simulate the loading state
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -129,7 +65,6 @@ const Page = () => {
 
   const handleNavigate = (page: string) => {
     setActivePage(page);
-    // Reset search when navigating
     setSearchQuery("");
   };
 
@@ -140,7 +75,7 @@ const Page = () => {
         return (
           <div className={`${publicSans.className} space-y-6`}>
             {/* Header Section */}
-            <div className="space-y-4 md:space-y-6">
+            <header className="space-y-4 md:space-y-6">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex justify-between items-center w-full md:w-auto">
                   <div className="flex items-center gap-2 md:gap-4">
@@ -148,14 +83,9 @@ const Page = () => {
                       <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                         Wallet Ledger
                       </h1>
-                      <Image
-                        src="/arrow.svg"
-                        alt="Drop-down Arrow"
-                        width={3} height={3}
-                        className="h-3 w-3 cursor-pointer"
-                        
-                      />
+                      <Image src="/arrow.svg" alt="Drop-down Arrow" width={3} height={3} className="h-3 w-3 cursor-pointer"/>
                     </div>
+
                     <div className="flex items-center gap-2 px-2 md:px-3 py-1 bg-faint-green rounded-full">
                       <div className="w-2 h-2 bg-[#087A2E] rounded-full"></div>
                       <span className="text-xs md:text-sm font-medium text-gray-700">
@@ -166,10 +96,7 @@ const Page = () => {
 
                   <div>
                     <button
-                      className="py-2 px-4 md:px-6 bg-[#4B8B9F]
-                                     text-sm font-medium rounded-full
-                                     transition-colors duration-200 shadow-sm cursor-pointer hidden max-md:block"
-                    >
+                      className="py-2 px-4 md:px-6 bg-[#4B8B9F] text-sm font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hidden max-md:block">
                       Share
                     </button>
                   </div>
@@ -177,16 +104,11 @@ const Page = () => {
 
                 <div className="flex items-center gap-3 md:gap-4">
                   <button
-                    className="py-2 px-4 md:px-6 bg-[#4B8B9F]
-                                   text-sm font-medium rounded-full 
-                                   transition-colors duration-200 shadow-sm cursor-pointer max-md:hidden"
-                  >
+                    className="py-2 px-4 md:px-6 bg-[#4B8B9F] text-sm font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer max-md:hidden">
                     Share
                   </button>
                   <button
-                    className="p-2 border-2 border-light-gray rounded-full 
-                                   hover:bg-light-gray transition-colors duration-200 max-ls:hidden"
-                  >
+                    className="p-2 border-2 border-light-gray rounded-full hover:bg-light-gray transition-colors duration-200 max-ls:hidden">
                     <Image
                       src="/union.svg"
                       alt="Union icon"
@@ -223,9 +145,8 @@ const Page = () => {
                   Transactions
                 </button>
               </div>
-            </div>
+            </header>
 
-            {/* Content */}
             {activeTab === "overview" && (
               <div className="space-y-6 md:space-y-8">
                 {/* Summary Section */}
@@ -243,16 +164,9 @@ const Page = () => {
                       </>
                     ) : (
                       <>
+                        <SummaryCard label="Total Balance" value="$12,345" change="+5%"/>
                         <SummaryCard
-                          label="Total Balance"
-                          value="$12,345"
-                          change="+5%"
-                        />
-                        <SummaryCard
-                          label="Total Credits"
-                          value="$7,890"
-                          change="+3%"
-                        />
+                          label="Total Credits" value="$7,890" change="+3%"/>
                         <SummaryCard label="Total Debits" value="$4,455" change="-2%" />
                         <SummaryCard label="Transactions" value="150" change="+10%" />
                       </>
