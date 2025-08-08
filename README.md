@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FinTrack Dashboard
+
+A modern, responsive dashboard to view a simple wallet ledger with summary cards and a searchable, sortable transactions table. Built with Next.js App Router, Tailwind CSS, and lightweight components.
+
+We keep the App Router structure with `/app`, `/components`, and `/public`, which aligns with recommended Next.js file organization. This project includes a README as recommended for clarity and onboarding.
+
+## Features
+
+- Wallet header with status and share controls
+- Team avatar group
+- Overview tab with animated skeletons while loading
+- Summary cards (Total Balance, Credits, Debits, Transactions)
+- Transactions tab with:
+  - Search across remark, type, currency, date, and amount
+  - Desktop table with sortable columns
+  - Mobile-friendly card list with a sort selector
+  - Empty state for no results
+- Responsive layout with sticky sidebar behavior on larger screens
+
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Next/Image for assets
 
 ## Getting Started
 
-First, run the development server:
+Prerequisites:
+- Node.js 18+
+
+Install dependencies and run:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

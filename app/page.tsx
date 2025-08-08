@@ -281,7 +281,7 @@ const Page = () => {
                   </h2>
                   <div className="text-sm text-gray-600">
                     {filteredTransactions.length} transactions
-                    {searchQuery && ` (filtered from ${transactions.length})`}
+                    {searchQuery && ` (out of 9 ${transactions.length})`}
                   </div>
                 </div>
                 {isLoading ? (

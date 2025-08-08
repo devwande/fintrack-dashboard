@@ -20,7 +20,7 @@ const SummaryCard = ({ label, value, change }: SummaryCardProps) => {
           alt="Union Icon"
           width={16}
           height={16}
-          className="w-4 h-4 flex-shrink-0"
+          className="w-4 h-4 flex-shrink-0 cursor-pointer"
         />
       </div>
       <div className="text-2xl md:text-3xl font-bold mt-3 md:mt-4 text-gray-900">

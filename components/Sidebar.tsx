@@ -17,7 +17,6 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isOpen, onClose, onNavigate, activePage }: SidebarProps) => {
-  const [active, setActive] = useState("dashboard");
 
   const menu = [
     { id: "dashboard", label: "Dashboard", href: "#" },
