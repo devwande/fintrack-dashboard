@@ -4,7 +4,7 @@ interface PageNotAvailableProps {
   pageName: string;
 }
 
-const PageNotAvailable = ({ pageName }: PageNotAvailableProps) => {
+const PageNotAvailable: React.FC<PageNotAvailableProps> = ({ pageName }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
       <div className="text-center max-w-md">
@@ -29,7 +29,7 @@ const PageNotAvailable = ({ pageName }: PageNotAvailableProps) => {
         </h1>
 
         <p className="text-gray-600 mb-6 leading-relaxed">
-          This page is currently not available. We're working on bringing you this feature soon.
+          {"This page is currently not available. We're working on bringing you this feature soon."}
         </p>
 
         <div className="flex flex-row items-center justify-center gap-5 ">
