@@ -24,6 +24,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "FinTrack",
   description: "Fintrack - Your Personal Finance Tracker",
+  icons: {
+    icon: '/logo.svg',
+  },
 };
 
 export default function RootLayout({
