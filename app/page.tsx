@@ -1,12 +1,13 @@
 "use client";
 import Layout from "@/components/Layout";
 import SummaryCard from "@/components/SummaryCard";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AvatarGroup from "@/components/AvatarGroup";
 import { Transaction } from "@/types";
 import TransactionTable from "@/components/TransactionTable";
 import { Public_Sans } from "next/font/google";
 import Image from "next/image";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 const publicSans = Public_Sans({
   variable: "--font-public-sans",
@@ -14,14 +15,13 @@ const publicSans = Public_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-
-
 const Page = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "transactions">(
     "overview"
   );
 
-    const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const transactions: Transaction[] = [
     {
@@ -98,21 +98,31 @@ const Page = () => {
     },
   ];
 
-    // Filter transactions based on search query
+  // Filter transactions based on search query
   const filteredTransactions = useMemo(() => {
     if (!searchQuery.trim()) return transactions;
-    
+
     const query = searchQuery.toLowerCase().trim();
-    return transactions.filter(transaction => 
-      transaction.remark.toLowerCase().includes(query) ||
-      transaction.type.toLowerCase().includes(query) ||
-      transaction.currency.toLowerCase().includes(query) ||
-      transaction.date.includes(query) ||
-      transaction.amount.toString().includes(query)
+    return transactions.filter(
+      (transaction) =>
+        transaction.remark.toLowerCase().includes(query) ||
+        transaction.type.toLowerCase().includes(query) ||
+        transaction.currency.toLowerCase().includes(query) ||
+        transaction.date.includes(query) ||
+        transaction.amount.toString().includes(query)
     );
   }, [searchQuery, transactions]);
 
-    const handleSearch = (query: string) => {
+//This is just to simulate the loading state
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleSearch = (query: string) => {
     setSearchQuery(query);
   };
 
@@ -131,9 +141,9 @@ const Page = () => {
                   <Image
                     src="/arrow.svg"
                     alt="Drop-down Arrow"
-                    width={3} height={3}
+                    width={3}
+                    height={3}
                     className="h-3 w-3 cursor-pointer"
-                    
                   />
                 </div>
                 <div className="flex items-center gap-2 px-2 md:px-3 py-1 bg-faint-green rounded-full">
@@ -170,9 +180,9 @@ const Page = () => {
                 <Image
                   src="/union.svg"
                   alt="Union icon"
-                  width={4} height={4}
+                  width={4}
+                  height={4}
                   className="w-4 h-4 cursor-pointer"
-                  
                 />
               </button>
             </div>
@@ -230,7 +240,14 @@ const Page = () => {
             </section>
 
             <section>
-              <TransactionTable transactions={filteredTransactions} searchQuery={searchQuery} />
+              {isLoading ? (
+                <LoadingSkeleton />
+              ) : (
+                <TransactionTable
+                  transactions={filteredTransactions}
+                  searchQuery={searchQuery}
+                />
+              )}
             </section>
           </div>
         )}
@@ -246,7 +263,14 @@ const Page = () => {
                 {searchQuery && ` (filtered from ${transactions.length})`}
               </div>
             </div>
-            <TransactionTable transactions={transactions} />
+            {isLoading ? (
+              <LoadingSkeleton />
+            ) : (
+              <TransactionTable
+                transactions={filteredTransactions}
+                searchQuery={searchQuery}
+              />
+            )}
           </section>
         )}
       </div>

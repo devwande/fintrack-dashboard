@@ -24,11 +24,6 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     { id: "settings", label: "Settings", href: "#" },
   ];
 
-  const handleItemClick = (item: string) => {
-    setActive(item);
-    onClose();
-  };
-
   return (
     <>
       {/* Mobile Overlay */}

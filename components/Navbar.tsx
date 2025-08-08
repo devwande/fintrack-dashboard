@@ -36,7 +36,7 @@ const Navbar = ({ onMenuClick, onSearch, searchQuery = "" }: NavbarProps) => {
         >
           <Image src="/menu.svg" alt="Menu button" width={6} height={6} className="w-auto h-auto" />
         </button>
-        <div className="flex items-center gap-2">
+        <div onClick={() => window.location.reload()} className="flex items-center gap-2 cursor-pointer">
           <Image
             src="/fintrackLogo.svg"
             alt="Fintrack Logo"
