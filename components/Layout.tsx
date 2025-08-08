@@ -7,9 +7,11 @@ interface LayoutProps {
   children: React.ReactNode
   onSearch?: (query: string) => void;
   searchQuery?: string;
+  onNavigate?: (page: string) => void;
+  activePage?: string;
 }
 
-const Layout = ({ children, onSearch, searchQuery }: LayoutProps) => {
+const Layout = ({ children, onSearch, searchQuery, onNavigate, activePage = "dashboard" }: LayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Open sidebar by default on desktop
@@ -34,11 +36,17 @@ const Layout = ({ children, onSearch, searchQuery }: LayoutProps) => {
     setSidebarOpen(false);
   };
 
+    const handleNavigate = (page: string) => {
+    if (onNavigate) {
+      onNavigate(page);
+    }
+  };
+
   return (
     <div className="min-h-screen max-w-[1600px] mx-auto">
       <Navbar onMenuClick={toggleSidebar} onSearch={onSearch} searchQuery={searchQuery}/>
       <div className="flex">
-        <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
+        <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} onNavigate={handleNavigate} activePage={activePage} />
         <main className="flex-1 px-4 max-w-full overflow-hidden">
           {children}
         </main>

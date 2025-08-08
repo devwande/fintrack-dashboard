@@ -12,17 +12,24 @@ const publicSans = Public_Sans({
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  onNavigate: (page: string) => void;
+  activePage: string;
 }
 
-const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
-  const [active, setActive] = useState("Dashboard");
+const Sidebar = ({ isOpen, onClose, onNavigate, activePage }: SidebarProps) => {
+  const [active, setActive] = useState("dashboard");
 
   const menu = [
-    { id: "dashboard", label: "Dashboard", href: "/#" },
+    { id: "dashboard", label: "Dashboard", href: "#" },
     { id: "transactions", label: "Transactions", href: "#" },
     { id: "report", label: "Report", href: "#" },
     { id: "settings", label: "Settings", href: "#" },
   ];
+
+    const handleItemClick = (item: { id: string; label: string }) => {
+    onNavigate(item.id);
+    onClose();
+  };
 
   return (
     <>
@@ -68,18 +75,16 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           </div>
 
           {/* Sidebar Content */}
-          <nav className="space-y-2 flex flex-col text-sm px-3">
+          <nav className=" flex flex-col text-sm px-3">
             {menu.map((item) => (
               <Link
                 key={item.id}
                 href={item.href}
-                onClick={(e) => {
-                  if (item.href === "#") e.preventDefault();
-                }}
+                onClick={() => handleItemClick(item)}
                 className={`${
                   publicSans.className
                 } text-left px-4 py-3 rounded-full transition-all duration-200 ${
-                  active === item.label
+                  activePage === item.id
                     ? "text-[#386776] bg-light-green shadow-sm"
                     : "text-gray-700 hover:bg-gray-50 hover:text-[#386776]"
                 }`}
