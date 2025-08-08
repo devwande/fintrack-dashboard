@@ -5,7 +5,8 @@ import { useState } from "react";
 import AvatarGroup from "@/components/AvatarGroup";
 import { Transaction } from "@/types";
 import TransactionTable from "@/components/TransactionTable";
-import { Public_Sans } from 'next/font/google';
+import { Public_Sans } from "next/font/google";
+import Image from "next/image";
 
 const publicSans = Public_Sans({
   variable: "--font-public-sans",
@@ -105,32 +106,48 @@ const index = () => {
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                     Wallet Ledger
                   </h1>
-                  <img src="/arrow.svg" alt="Drop-down Arrow" className="w-3 h-3 cursor-pointer" />
+                  <Image
+                    src="/arrow.svg"
+                    alt="Drop-down Arrow"
+                    className="w-3 h-3 cursor-pointer"
+                  />
                 </div>
                 <div className="flex items-center gap-2 px-2 md:px-3 py-1 bg-faint-green rounded-full">
                   <div className="w-2 h-2 bg-[#087A2E] rounded-full"></div>
-                  <span className="text-xs md:text-sm font-medium text-gray-700">Active</span>
+                  <span className="text-xs md:text-sm font-medium text-gray-700">
+                    Active
+                  </span>
                 </div>
               </div>
 
               <div>
-                <button className="py-2 px-4 md:px-6 bg-[#4B8B9F]
+                <button
+                  className="py-2 px-4 md:px-6 bg-[#4B8B9F]
                                  text-sm font-medium rounded-full
-                                 transition-colors duration-200 shadow-sm cursor-pointer hidden max-md:block">
+                                 transition-colors duration-200 shadow-sm cursor-pointer hidden max-md:block"
+                >
                   Share
                 </button>
               </div>
             </div>
 
             <div className="flex items-center gap-3 md:gap-4">
-              <button className="py-2 px-4 md:px-6 bg-[#4B8B9F]
+              <button
+                className="py-2 px-4 md:px-6 bg-[#4B8B9F]
                                text-sm font-medium rounded-full 
-                               transition-colors duration-200 shadow-sm cursor-pointer max-md:hidden">
+                               transition-colors duration-200 shadow-sm cursor-pointer max-md:hidden"
+              >
                 Share
               </button>
-              <button className="p-2 border-2 border-light-gray rounded-full 
-                               hover:bg-light-gray transition-colors duration-200 max-ls:hidden">
-                <img src="/union.svg" alt="Union icon" className="w-4 h-4 cursor-pointer" />
+              <button
+                className="p-2 border-2 border-light-gray rounded-full 
+                               hover:bg-light-gray transition-colors duration-200 max-ls:hidden"
+              >
+                <Image
+                  src="/union.svg"
+                  alt="Union icon"
+                  className="w-4 h-4 cursor-pointer"
+                />
               </button>
             </div>
           </div>
@@ -181,20 +198,12 @@ const index = () => {
                   value="$7,890"
                   change="+3%"
                 />
-                <SummaryCard
-                  label="Total Debits"
-                  value="$4,455"
-                  change="-2%"
-                />
-                <SummaryCard
-                  label="Transactions"
-                  value="150"
-                  change="+10%"
-                />
+                <SummaryCard label="Total Debits" value="$4,455" change="-2%" />
+                <SummaryCard label="Transactions" value="150" change="+10%" />
               </div>
             </section>
 
-            <section> 
+            <section>
               <TransactionTable transactions={transactions} />
             </section>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Transaction } from "@/types";
+import Image from "next/image";
 
 interface Props {
   transactions: Transaction[];
@@ -47,7 +48,7 @@ const TransactionTable = ({ transactions }: Props) => {
       >
         <div className="flex items-center gap-2">
           {label}
-          <img
+          <Image
             src="/chevronDown.svg"
             alt="Sort icon"
             className={`w-2 h-2 transition-transform duration-200 ${
@@ -80,7 +81,8 @@ const TransactionTable = ({ transactions }: Props) => {
                   <td className="p-3 w-[50%]">{tx.date}</td>
                   <td className="p-3 w-[12.5%]">{tx.remark}</td>
                   <td className="p-3 w-[8%] text-black">
-                    {tx.amount < 0 ? "-" : ""}${Math.abs(tx.amount).toLocaleString()}
+                    {tx.amount < 0 ? "-" : ""}$
+                    {Math.abs(tx.amount).toLocaleString()}
                   </td>
                   <td className="p-3 w-[8%]">{tx.currency}</td>
                   <td className="p-3 w-[8%]">
@@ -98,17 +100,17 @@ const TransactionTable = ({ transactions }: Props) => {
             </tbody>
           </table>
         </div>
-        
+
         {/* Mobile View */}
         <div className="md:hidden">
           {/* Mobile Sort Dropdown */}
           <div className="mb-4">
             <select
-              value={`${sortKey}-${asc ? 'asc' : 'desc'}`}
+              value={`${sortKey}-${asc ? "asc" : "desc"}`}
               onChange={(e) => {
-                const [key, direction] = e.target.value.split('-');
+                const [key, direction] = e.target.value.split("-");
                 setSortKey(key as SortKey);
-                setAsc(direction === 'asc');
+                setAsc(direction === "asc");
               }}
               className="w-1/3 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none  bg-white text-sm"
             >
@@ -122,10 +124,13 @@ const TransactionTable = ({ transactions }: Props) => {
               <option value="type-desc">Type (Debit First)</option>
             </select>
           </div>
-          
+
           <div className="">
             {sorted.map((tx) => (
-              <div key={tx.id} className="p-4 border-t-2 border-light-gray hover:bg-gray-50 transition-colors">
+              <div
+                key={tx.id}
+                className="p-4 border-t-2 border-light-gray hover:bg-gray-50 transition-colors"
+              >
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex-1 min-w-0">
                     <h4 className="text-sm font-medium text-gray-900 truncate">
@@ -135,7 +140,8 @@ const TransactionTable = ({ transactions }: Props) => {
                   </div>
                   <div className="text-right ml-4">
                     <p className="text-sm font-semibold text-gray-900">
-                      {tx.amount < 0 ? "-" : ""}${Math.abs(tx.amount).toLocaleString()}
+                      {tx.amount < 0 ? "-" : ""}$
+                      {Math.abs(tx.amount).toLocaleString()}
                     </p>
                     <p className="text-xs text-gray-500">{tx.currency}</p>
                   </div>

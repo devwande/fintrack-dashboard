@@ -56,7 +56,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           </div>
           
           {/* Sidebar Content */}
-        <nav className="space-y-2 flex flex-col text-sm p-4 md:p-6">
+        <nav className="space-y-2 flex flex-col text-sm px-3">
           {navItems.map((item) => (
             <button
               key={item}

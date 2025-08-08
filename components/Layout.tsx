@@ -37,7 +37,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Navbar onMenuClick={toggleSidebar} />
       <div className="flex">
         <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
-        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-full overflow-hidden">
+        <main className="flex-1 px-4 max-w-full overflow-hidden">
           {children}
         </main>
       </div>
