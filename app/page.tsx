@@ -14,7 +14,7 @@ const publicSans = Public_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-const index = () => {
+const Page = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "transactions">(
     "overview"
   );
@@ -231,4 +231,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Page;

@@ -33,7 +33,7 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen max-w-[1600px] mx-auto">
       <Navbar onMenuClick={toggleSidebar} />
       <div className="flex">
         <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />

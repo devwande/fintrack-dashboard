@@ -18,7 +18,7 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
   };
 
   return (
-    <header className="flex items-center justify-between py-4 px-4 md:px-6 relative z-50">
+    <header className="flex items-center justify-between py-4 px-4 relative z-50">
       <div className="flex items-center gap-4 md:gap-8">
         <button
           onClick={onMenuClick}
@@ -85,7 +85,7 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
         <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors hidden md:block">
           <Image src="/app-grid.svg" alt="App Grid" width={5} height={5} className="w-5 h-5" />
         </button>
-        <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+        <button className="py-2rounded-lg transition-colors">
           <Image
             src="/profile.svg"
             alt="Profile Picture"
