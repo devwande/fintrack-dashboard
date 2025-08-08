@@ -2,6 +2,17 @@
 
 @layer theme, base, components, utilities;
 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
 @layer components {
     .bg-faint-green{
         @apply bg-[rgba(52,97,111,0.09)]
@@ -14,8 +25,32 @@
     .border-light-gray{
         @apply border-[rgba(73,101,110,0.2)]
     }
+    
     .text-light-gray{
         @apply text-[rgba(21,39,45,0.62)]
+    }
+
+    /* Custom scrollbar for mobile */
+    .overflow-x-auto::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar-track {
+        @apply bg-gray-100 rounded-full;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-full;
+    }
+    
+    .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-400;
+    }
+
+    /* Smooth transitions for interactive elements */
+    .transition-all {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
@@ -26,4 +61,9 @@
         --breakpoint-lg: 1024px;
         --breakpoint-ld: 1140px;
         --breakpoint-xl: 1280px;
+        --breakpoint-2xl: 1536px;
+        
+        --color-background: #ffffff;
+        --color-foreground: #0f172a;
+        --color-border: #e2e8f0;
 }

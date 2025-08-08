@@ -8,29 +8,70 @@ const publicSans = Public_Sans({
   weight: ["400", "500", "600", "700"],
 })
 
-const Sidebar = () => {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const [active, setActive] = useState('Dashboard')
 
   const navItems = ['Dashboard', 'Transactions', 'Reports', 'Settings']
 
+  const handleItemClick = (item: string) => {
+    setActive(item);
+    onClose(); // Close sidebar on mobile after selection
+  };
+
   return (
-    <aside className="w-[320px] min-h-screen border-r border-white hidden md:flex flex-col ">
-      <nav className="space-y-4 flex flex-col text-sm">
-        {navItems.map((item) => (
-          <button
-            key={item}
-            onClick={() => setActive(item)}
-            className={`${publicSans.className} text-left px-3 py-2 rounded-full transition-colors ${
-              active === item
-                ? 'text-[#386776] bg-light-green'
-                : 'text-black'
-            }`}
+    <>
+      {/* Mobile Overlay */}
+      {/* {isOpen && (
+        <div 
+          className="fixed inset-0 bg-opacity-50 z-40 md:hidden"
+          onClick={onClose}
+        />
+      )} */}
+      
+      {/* Sidebar */}
+      <aside className={`
+        fixed md:static top-0 left-0 h-full bg-white w-[280px] md:w-[320px] z-50
+        transform transition-transform duration-300 ease-in-out
+        ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+        flex flex-col
+      `}>
+        {/* Mobile Header */}
+        <div className="flex items-center justify-between p-4 md:hidden">
+          <div className='flex items-center gap-2'>
+            <img src="/fintrackLogo.svg" alt="Fintrack Logo" className="h-6" />
+          </div>
+          <button 
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            {item}
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
-        ))}
-      </nav>
-    </aside>
+        </div>
+
+        <nav className="space-y-2 flex flex-col text-sm p-4 md:p-6">
+          {navItems.map((item) => (
+            <button
+              key={item}
+              onClick={() => handleItemClick(item)}
+              className={`${publicSans.className} text-left px-4 py-3 rounded-full transition-all duration-200 ${
+                active === item
+                  ? 'text-[#386776] bg-light-green shadow-sm'
+                  : 'text-gray-700 hover:bg-gray-50 hover:text-[#386776]'
+              }`}
+            >
+              {item}
+            </button>
+          ))}
+        </nav>
+      </aside>
+    </>
   )
 }
 
