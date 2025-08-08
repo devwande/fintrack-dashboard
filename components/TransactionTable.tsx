@@ -51,6 +51,8 @@ const TransactionTable = ({ transactions }: Props) => {
           <Image
             src="/chevronDown.svg"
             alt="Sort icon"
+            width={16}
+            height={16}
             className={`w-2 h-2 transition-transform duration-200 ${
               isActive ? (asc ? "rotate-0" : "rotate-180") : ""
             }`}

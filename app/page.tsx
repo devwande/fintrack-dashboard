@@ -109,7 +109,9 @@ const index = () => {
                   <Image
                     src="/arrow.svg"
                     alt="Drop-down Arrow"
-                    className="w-3 h-3 cursor-pointer"
+                    width={3} height={3}
+                    className="h-3 w-3 cursor-pointer"
+                    
                   />
                 </div>
                 <div className="flex items-center gap-2 px-2 md:px-3 py-1 bg-faint-green rounded-full">
@@ -146,7 +148,9 @@ const index = () => {
                 <Image
                   src="/union.svg"
                   alt="Union icon"
+                  width={4} height={4}
                   className="w-4 h-4 cursor-pointer"
+                  
                 />
               </button>
             </div>

@@ -10,11 +10,13 @@ const AvatarGroup = () => {
     <div className="flex items-center space-x-2">
       <div className="flex -space-x-2">
         {avatars.map((avatar, index) => (
-          <Image
+          <img
             key={index}
             src={avatar.src}
             alt={avatar.name}
-            className="w-8 h-8 rounded-full border-2 border-white object-cover"
+            width={8} height={8}
+            className="h-8 w-8 rounded-full border-2 border-white object-cover"
+            
           />
         ))}
       </div>

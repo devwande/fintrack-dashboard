@@ -24,13 +24,14 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
           onClick={onMenuClick}
           className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-300"
         >
-          <Image src="/menu.svg" alt="Menu button" className="w-5 h-5" />
+          <Image src="/menu.svg" alt="Menu button" width={6} height={6} className="w-auto h-auto" />
         </button>
         <div className="flex items-center gap-2">
           <Image
             src="/fintrackLogo.svg"
             alt="Fintrack Logo"
-            className="h-6 md:h-8"
+            width={6} height={6}
+            className="h-6 w-auto md:h-8"
           />
         </div>
       </div>
@@ -72,6 +73,8 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
             <Image
               src="/search.svg"
               alt="Search"
+              width={5}
+              height={5}
               className={`w-5 h-5 transition-all duration-300 ${
                 isSearchOpen ? "filter brightness-0 invert " : ""
               }`}
@@ -80,12 +83,13 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
         </div>
 
         <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors hidden md:block">
-          <Image src="/app-grid.svg" alt="App Grid" className="w-5 h-5" />
+          <Image src="/app-grid.svg" alt="App Grid" width={5} height={5} className="w-5 h-5" />
         </button>
         <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
           <Image
             src="/profile.svg"
             alt="Profile Picture"
+            width={6} height={6}
             className="w-6 h-6 md:w-8 md:h-8"
           />
         </button>
