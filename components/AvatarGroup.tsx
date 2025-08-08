@@ -18,7 +18,7 @@ const AvatarGroup = () => {
           />
         ))}
       </div>
-      <span className="text-sm text-gray-600">Ava, Liam, Noah +12 others</span>
+      <span className="text-sm text-light-gray">Ava, Liam, Noah +12 others</span>
     </div>
   )
 }

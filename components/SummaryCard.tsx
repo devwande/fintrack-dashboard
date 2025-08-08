@@ -11,9 +11,9 @@ const SummaryCard = ({ label, value, change }: SummaryCardProps) => {
     <div className="bg-faint-green p-5 rounded-xl border border-none w-full sm:w-auto">
       <div className="text-md font-bold flex justify-between items-center">
         {label}
-        <button className="text-2xl font-bold">⋯</button>
+        <img src="/union.svg" alt="Union Icon" />
       </div>
-      <div className="text-3xl font-bold mt-2">{value}</div>
+      <div className="text-3xl font-bold mt-4">{value}</div>
       <div
         className={`text-sm mt-1 text-[#3E7383]`}
       >

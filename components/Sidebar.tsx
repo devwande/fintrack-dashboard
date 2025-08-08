@@ -22,8 +22,8 @@ const Sidebar = () => {
             onClick={() => setActive(item)}
             className={`${publicSans.className} text-left px-3 py-2 rounded-full transition-colors ${
               active === item
-                ? 'text-[#386776] bg-[#8DC3D4]'
-                : 'text-gray-700 hover:bg-gray-100'
+                ? 'text-[#386776] bg-light-green'
+                : 'text-black'
             }`}
           >
             {item}

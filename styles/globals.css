@@ -6,6 +6,17 @@
     .bg-faint-green{
         @apply bg-[rgba(52,97,111,0.09)]
     }
+
+    .bg-light-green{
+        @apply bg-[rgba(56,103,118,0.16)]
+    }
+
+    .border-light-gray{
+        @apply border-[rgba(73,101,110,0.2)]
+    }
+    .text-light-gray{
+        @apply text-[rgba(21,39,45,0.62)]
+    }
 }
 
 @theme {

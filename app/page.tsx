@@ -99,17 +99,26 @@ const index = () => {
         className={`${publicSans.className} flex md:flex-row md:items-center justify-between mb-4 gap-2`}
       >
         <div className="w-full space-y-6">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-semibold">Wallet Ledger </h1>
-              <img src="/arrow.svg" alt="Drop-down Arrow" />
+          <div className="flex justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <h1 className="text-3xl font-semibold">Wallet Ledger </h1>
+                <img src="/arrow.svg" alt="Drop-down Arrow" />
+              </div>
+
+              <div className="flex items-center gap-2 px-2 py-1 bg-faint-green rounded-full">
+                <div className="p-[3] bg-[#087A2E] rounded-full"></div>
+                <h1 className="text-sm">Active</h1>
+              </div>
             </div>
 
-            <div className="flex items-center gap-4 px-2 py-1 bg-[#99c9d8] rounded-full">
-              <div className="p-[3] bg-[#087A2E] rounded-full"></div>
-              <h1 className="text-sm">Active</h1>
+            <div className="flex items-center gap-4">
+              <button className="py-2 px-4 bg-[#4B8B9F] rounded-3xl">Share</button>
+              <img src="/union.svg" alt="Union icon" className="py-4 px-3 border-2 border-light-gray rounded-full"/>
             </div>
           </div>
+
+
 
           <div>
             <AvatarGroup />
@@ -129,8 +138,8 @@ const index = () => {
             <button
               className={`pb-2 px-5 border-b-2 text-sm ${
                 activeTab === "transactions"
-                  ? "border-blue-600 text-blue-600 font-medium"
-                  : "border-transparent text-gray-500"
+                  ? "border-[#437D8E] text-[#437D8E] font-medium"
+                  : "border-transparent text-[#15272D]"
               }`}
               onClick={() => setActiveTab("transactions")}
             >
