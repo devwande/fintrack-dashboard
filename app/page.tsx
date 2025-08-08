@@ -7,7 +7,8 @@ import { Transaction } from "@/types";
 import TransactionTable from "@/components/TransactionTable";
 import { Public_Sans } from "next/font/google";
 import Image from "next/image";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
+import LoadingSkeleton from "@/components/skeletons/LoadingSkeleton";
+import SummaryCardSkeleton from "@/components/skeletons/SummaryCardSkeleton";
 
 const publicSans = Public_Sans({
   variable: "--font-public-sans",
@@ -224,18 +225,29 @@ const Page = () => {
                 Summary
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <SummaryCard
-                  label="Total Balance"
-                  value="$12,345"
-                  change="+5%"
-                />
-                <SummaryCard
-                  label="Total Credits"
-                  value="$7,890"
-                  change="+3%"
-                />
-                <SummaryCard label="Total Debits" value="$4,455" change="-2%" />
-                <SummaryCard label="Transactions" value="150" change="+10%" />
+                {isLoading ? (
+                  <>
+                    <SummaryCardSkeleton />
+                    <SummaryCardSkeleton />
+                    <SummaryCardSkeleton />
+                    <SummaryCardSkeleton />
+                  </>
+                ) : (
+                  <>
+                    <SummaryCard
+                      label="Total Balance"
+                      value="$12,345"
+                      change="+5%"
+                    />
+                    <SummaryCard
+                      label="Total Credits"
+                      value="$7,890"
+                      change="+3%"
+                    />
+                    <SummaryCard label="Total Debits" value="$4,455" change="-2%" />
+                    <SummaryCard label="Transactions" value="150" change="+10%" />
+                  </>
+                )}
               </div>
             </section>
 

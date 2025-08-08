@@ -32,7 +32,7 @@ const Navbar = ({ onMenuClick, onSearch, searchQuery = "" }: NavbarProps) => {
       <div className="flex items-center gap-4 md:gap-8">
         <button
           onClick={onMenuClick}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-300"
+          className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-300 cursor-pointer"
         >
           <Image src="/menu.svg" alt="Menu button" width={6} height={6} className="w-auto h-auto" />
         </button>
@@ -85,7 +85,7 @@ const Navbar = ({ onMenuClick, onSearch, searchQuery = "" }: NavbarProps) => {
               alt="Search"
               width={5}
               height={5}
-              className={`w-5 h-5 transition-all duration-300 ${
+              className={`w-5 h-5 transition-all duration-300 cursor-pointer ${
                 isSearchOpen ? "filter brightness-0 invert " : ""
               }`}
             />
@@ -93,7 +93,7 @@ const Navbar = ({ onMenuClick, onSearch, searchQuery = "" }: NavbarProps) => {
         </div>
 
         <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors hidden md:block">
-          <Image src="/app-grid.svg" alt="App Grid" width={5} height={5} className="w-5 h-5" />
+          <Image src="/app-grid.svg" alt="App Grid" width={5} height={5} className="w-5 h-5 cursor-pointer" />
         </button>
         <button className="py-2rounded-lg transition-colors">
           <Image

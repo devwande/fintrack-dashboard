@@ -45,11 +45,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       >
         <div className="flex flex-col h-full">
           {/* Sidebar Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 md:hidden">
+          <div className="flex items-center justify-between p-4 md:hidden">
             <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-300"
             >
               <svg
                 className="w-5 h-5"
