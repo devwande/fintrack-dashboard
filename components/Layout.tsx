@@ -5,9 +5,11 @@ import Sidebar from './Sidebar'
 
 interface LayoutProps {
   children: React.ReactNode
+  onSearch?: (query: string) => void;
+  searchQuery?: string;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, onSearch, searchQuery }: LayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Open sidebar by default on desktop
@@ -34,7 +36,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen max-w-[1600px] mx-auto">
-      <Navbar onMenuClick={toggleSidebar} />
+      <Navbar onMenuClick={toggleSidebar} onSearch={onSearch} searchQuery={searchQuery}/>
       <div className="flex">
         <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
         <main className="flex-1 px-4 max-w-full overflow-hidden">

@@ -1,7 +1,7 @@
 "use client";
 import Layout from "@/components/Layout";
 import SummaryCard from "@/components/SummaryCard";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import AvatarGroup from "@/components/AvatarGroup";
 import { Transaction } from "@/types";
 import TransactionTable from "@/components/TransactionTable";
@@ -14,10 +14,14 @@ const publicSans = Public_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
+
+
 const Page = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "transactions">(
     "overview"
   );
+
+    const [searchQuery, setSearchQuery] = useState("");
 
   const transactions: Transaction[] = [
     {
@@ -94,8 +98,26 @@ const Page = () => {
     },
   ];
 
+    // Filter transactions based on search query
+  const filteredTransactions = useMemo(() => {
+    if (!searchQuery.trim()) return transactions;
+    
+    const query = searchQuery.toLowerCase().trim();
+    return transactions.filter(transaction => 
+      transaction.remark.toLowerCase().includes(query) ||
+      transaction.type.toLowerCase().includes(query) ||
+      transaction.currency.toLowerCase().includes(query) ||
+      transaction.date.includes(query) ||
+      transaction.amount.toString().includes(query)
+    );
+  }, [searchQuery, transactions]);
+
+    const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
   return (
-    <Layout>
+    <Layout onSearch={handleSearch} searchQuery={searchQuery}>
       <div className={`${publicSans.className} space-y-6`}>
         {/* Header Section */}
         <div className="space-y-4 md:space-y-6">
@@ -208,7 +230,7 @@ const Page = () => {
             </section>
 
             <section>
-              <TransactionTable transactions={transactions} />
+              <TransactionTable transactions={filteredTransactions} searchQuery={searchQuery} />
             </section>
           </div>
         )}
@@ -220,7 +242,8 @@ const Page = () => {
                 All Transactions
               </h2>
               <div className="text-sm text-gray-600">
-                {transactions.length} transactions
+                {filteredTransactions.length} transactions
+                {searchQuery && ` (filtered from ${transactions.length})`}
               </div>
             </div>
             <TransactionTable transactions={transactions} />

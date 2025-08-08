@@ -2,14 +2,16 @@
 import { useState } from "react";
 import { Transaction } from "@/types";
 import Image from "next/image";
+import EmptyState from "./EmptyState";
 
 interface Props {
-  transactions: Transaction[];
+  transactions: Transaction[];  
+  searchQuery?: string;
 }
 
 type SortKey = "date" | "remark" | "amount" | "type";
 
-const TransactionTable = ({ transactions }: Props) => {
+const TransactionTable = ({ transactions, searchQuery }: Props) => {
   const [sortKey, setSortKey] = useState<SortKey>("date");
   const [asc, setAsc] = useState<boolean>(true);
 
@@ -61,6 +63,10 @@ const TransactionTable = ({ transactions }: Props) => {
       </th>
     );
   };
+
+    if (sorted.length === 0) {
+    return <EmptyState searchQuery={searchQuery} />;
+  }
 
   return (
     <div>

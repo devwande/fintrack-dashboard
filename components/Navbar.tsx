@@ -4,11 +4,21 @@ import Image from "next/image";
 
 interface NavbarProps {
   onMenuClick: () => void;
+  onSearch?: (query: string) => void;
+  searchQuery?: string;
 }
 
-const Navbar = ({ onMenuClick }: NavbarProps) => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+const Navbar = ({ onMenuClick, onSearch, searchQuery = "" }: NavbarProps) => {
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [search, setSearchQuery] = useState("");
+
+  const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setLocalSearchQuery(query);
+    onSearch?.(query);
+  };
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
@@ -53,8 +63,8 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
           >
             <input
               type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={localSearchQuery || search}
+              onChange={handleSearchChange}
               placeholder="Search transactions..."
               className="w-full px-4 py-2 pr-12 border border-gray-300 rounded-full 
                        focus:outline-none focus:ring-2 focus:ring-white 
