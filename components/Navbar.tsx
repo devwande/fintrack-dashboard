@@ -98,7 +98,7 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
       {/* Search Overlay for Mobile */}
       {isSearchOpen && (
         <div
-          className="fixed inset-0 bg-opacity-50 md:hidden z-40"
+          className="fixed inset-0 bg-opacity-50 hidden z-40"
           onClick={toggleSearch}
         />
       )}
