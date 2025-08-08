@@ -21,13 +21,10 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
       <div className="flex items-center gap-4 md:gap-8">
         <button 
           onClick={onMenuClick}
-          className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-300"
         >
           <img src="/menu.svg" alt="Menu button" className="w-5 h-5" />
         </button>
-        <div className="hidden md:block">
-          <img src="/menu.svg" alt="Menu button" />
-        </div>
         <div className='flex items-center gap-2'>
           <img src="/fintrackLogo.svg" alt="Fintrack Logo" className="h-6 md:h-8" />
         </div>

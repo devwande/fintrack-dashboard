@@ -14,47 +14,48 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
-  const [active, setActive] = useState('Dashboard')
+    const [active, setActive] = useState('Dashboard')
 
-  const navItems = ['Dashboard', 'Transactions', 'Reports', 'Settings']
+    const navItems = ['Dashboard', 'Transactions', 'Reports', 'Settings']
 
-  const handleItemClick = (item: string) => {
+    const handleItemClick = (item: string) => {
     setActive(item);
-    onClose(); // Close sidebar on mobile after selection
+    onClose(); 
   };
+
 
   return (
     <>
       {/* Mobile Overlay */}
-      {/* {isOpen && (
+      {isOpen && (
         <div 
-          className="fixed inset-0 bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={onClose}
         />
-      )} */}
+      )}
       
       {/* Sidebar */}
       <aside className={`
-        fixed md:static top-0 left-0 h-full bg-white w-[280px] md:w-[320px] z-50
+        fixed md:static inset-y-0 left-0 z-50 w-64 bg-white
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
-        flex flex-col
+        ${isOpen ? 'md:block' : 'md:hidden'}
       `}>
-        {/* Mobile Header */}
-        <div className="flex items-center justify-between p-4 md:hidden">
-          <div className='flex items-center gap-2'>
-            <img src="/fintrackLogo.svg" alt="Fintrack Logo" className="h-6" />
+        <div className="flex flex-col h-full">
+          {/* Sidebar Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 md:hidden">
+            <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
+            <button 
+              onClick={onClose}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-          <button 
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
+          
+          {/* Sidebar Content */}
         <nav className="space-y-2 flex flex-col text-sm p-4 md:p-6">
           {navItems.map((item) => (
             <button
@@ -70,6 +71,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             </button>
           ))}
         </nav>
+        </div>
       </aside>
     </>
   )
